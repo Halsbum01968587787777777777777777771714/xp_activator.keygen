@@ -1,0 +1,346 @@
+﻿// Microsoft Visual C++ generated resource script.
+1 24 "xp_activate32.manifest"
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Активатор Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Ваш ключ:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Генерировать ключ", 105, 314, 40, 74, 12
+    CTEXT           "Код установки:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Спросить у системы", 102, 314, 54, 74, 12
+    CTEXT           "Код подтверждения:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Сказать системе", 104, 314, 68, 74, 12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    ".\\keys.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       "Успешная активация"
+    1                       "жду код установки..."
+    2                       "код слишком длинный"
+    3                       "неправильный символ"
+    4                       "ошибка в проверочной цифре"
+    5                       "неизвестная версия кода"
+    6                       "ну очень невезучий код"
+    7                       "говорю с системой..."
+    8                       "Ошибка"
+    9                       "Информация"
+    10                      "Не получилось инициализировать менеджер лицензий"
+    11                      "Не получилось проверить статус активации"
+    12                      "Менеджер лицензий считает систему уже активированной"
+    13                      "Менеджер лицензий вернул ошибку"
+END
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Your Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generate Key", 105, 314, 40, 74, 12
+    CTEXT           "Installation ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Get from the system", 102, 314, 54, 74, 12
+    CTEXT           "Confirmation ID:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       "Successful activation"
+    1                       "waiting for input..."
+    2                       "ID is too large"
+    3                       "invalid character"
+    4                       "invalid check digit"
+    5                       "unknown version of ID"
+    6                       "this ID is really unlucky"
+    7                       "talking to the system..."
+    8                       "Error"
+    9                       "Information"
+    10                      "Failed to initialize license manager"
+    11                      "Failed to check activation status"
+    12                      "License manager says that the system is already activated"
+    13                      "License manager has failed"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+
+/////////////////////////////////////////////////////////////////////////////
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Aktivator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Ihr Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Key generieren", 105, 314, 40, 74, 12
+    CTEXT           "Installations-ID:",-1,2,54,58,10
+    EDITTEXT        101,60,54,250,12,ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Vom System abrufen",102,314,54,74,12
+    CTEXT           "Bestaetigungs-ID:",-1,2,68,58,10
+    EDITTEXT        103,60,68,250,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Im System speichern",104,314,68,74,12
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       "Erfolgreiche Aktivierung"
+    1                       "Warte auf Eingabe..."
+    2                       "ID ist zu lang"
+    3                       "Ungueltiges Zeichen"
+    4                       "Ungueltige Pruefziffer"
+    5                       "Unbekannte ID-Version"
+    6                       "Diese ID ist sehr unglücklich"
+    7                       "Kommuniziere mit dem System..."
+    8                       "Fehler"
+    9                       "Information"
+    10                      "Initialisierung des Lizenzmanagers fehlgeschlagen"
+    11                      "Überprüfung des Aktivierungsstatus fehlgeschlagen"
+    12                      "Lizenzmanager meldet: System bereits aktiviert"
+    13                      "Lizenzmanager hat einen Fehler gemeldet"
+END
+
+#endif    // German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESP)
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Activador de Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Su clave:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generar clave", 105, 314, 40, 74, 12
+    CTEXT           "ID de instalación:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Obtener del sistema", 102, 314, 54, 74, 12
+    CTEXT           "ID de confirmación:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Guardar en sistema", 104, 314, 68, 74, 12
+END
+
+STRINGTABLE
+BEGIN
+    0   "Activación exitosa"
+    1   "Esperando entrada..."
+    2   "ID demasiado largo"
+    3   "Carácter no válido"
+    4   "Dígito de control no válido"
+    5   "Versión de ID desconocida"
+    6   "Esta ID es muy desafortunada"
+    7   "Comunicando con el sistema..."
+    8   "Error"
+    9   "Información"
+    10  "Error al inicializar el gestor de licencias"
+    11  "Error al comprobar el estado de activación"
+    12  "El gestor de licencias indica que el sistema ya está activado"
+    13  "El gestor de licencias ha devuelto un error"
+END
+#endif
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Your Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generate Key", 105, 314, 40, 74, 12
+    CTEXT           "Installation ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Get from the system", 102, 314, 54, 74, 12
+    CTEXT           "Confirmation ID:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+END
+
+STRINGTABLE
+BEGIN
+    0   "Successful activation"
+    1   "Waiting for input..."
+    2   "ID is too long"
+    3   "Invalid character"
+    4   "Invalid check digit"
+    5   "Unknown ID version"
+    6   "This ID is really unlucky"
+    7   "Talking to the system..."
+    8   "Error"
+    9   "Information"
+    10  "Failed to initialise licence manager"
+    11  "Failed to check activation status"
+    12  "Licence manager says that the system is already activated"
+    13  "Licence manager has failed"
+END
+#endif
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Your Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generate Key", 105, 314, 40, 74, 12
+    CTEXT           "Installation ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Get from the system", 102, 314, 54, 74, 12
+    CTEXT           "Confirmation ID:", -1, 2, 38, 68, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+END
+
+STRINGTABLE
+BEGIN
+    0   "Successful activation"
+    1   "Waiting for input..."
+    2   "ID is too long"
+    3   "Invalid character"
+    4   "Invalid check digit"
+    5   "Unknown ID version"
+    6   "This ID is really unlucky"
+    7   "Talking to the system..."
+    8   "Error"
+    9   "Information"
+    10  "Failed to initialize license manager"
+    11  "Failed to check activation status"
+    12  "License manager says that the system is already activated"
+    13  "License manager has failed"
+END
+#endif
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+IDB_KEY_BITMAP BITMAP "key.bmp"
+
+// Am Ende deiner Resource.rc Datei:
+

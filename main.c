@@ -9,7 +9,6 @@
 #include <stdint.h>
 #include <intrin.h>
 #include <keygen_interface.h>
-#include <aero_helper.h>
 #include <windows.h>
 #include "resource.h"
 #include <stdio.h>
@@ -1009,10 +1008,25 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	int i;
 	switch (uMsg) {
+	case WM_CTLCOLORSTATIC: {
+        	HDC hdcStatic = (HDC)wParam;
+        	SetTextColor(hdcStatic, RGB(0, 0, 0));             // Text schwarz
+        	SetBkColor(hdcStatic, GetSysColor(COLOR_3DFACE));  // Hintergrund Dialog-Grau
+        	return (LRESULT)GetSysColorBrush(COLOR_3DFACE);    // Pinsel für Dialog-Grau
+    	}
+    
+    	// Falls deine Edit-Felder (ReadOnly) auch betroffen sind:
+    	case WM_CTLCOLOREDIT: {
+    	        HDC hdcEdit = (HDC)wParam;
+    	        // Optional: Hier nur für spezifische IDs (wie 106) die Farben setzen
+   	        SetTextColor(hdcEdit, RGB(0, 0, 0));
+    	        SetBkColor(hdcEdit, GetSysColor(COLOR_3DFACE));
+   	        return (LRESULT)GetSysColorBrush(COLOR_3DFACE);
+    	}
 	case WM_INITDIALOG:
         	{
 		EnableWindow(GetDlgItem(hDlg, 104), FALSE);
-		EnableAeroGlass(hDlg);
+
             	// 1. Bild laden und setzen
             	HBITMAP hImage = (HBITMAP)LoadImage(GetModuleHandle(NULL), 
                                               	MAKEINTRESOURCE(IDB_KEY_BITMAP), 
@@ -1030,13 +1044,13 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     
     		if (hIcon[1] != NULL)
 		    SendMessage(hDlg, WM_SETICON, ICON_BIG, (LPARAM)hIcon[1]);
-		EnableAeroGlass(hDlg);
+
     		return TRUE;
 		}
             
             	OnActivationIdChange(hDlg);
             	SendMessage(hDlg, DM_SETDEFID, 102, 0);
-		EnableAeroGlass(hDlg);
+
         	}
         	return TRUE;
 	case WM_CLOSE:

@@ -1,4 +1,4 @@
-/* crypto/md5/md5.h */
+/* $OpenBSD: md5.h,v 1.25 2025/01/25 17:59:44 tb Exp $ */
 /* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
  * All rights reserved.
  *
@@ -56,61 +56,41 @@
  * [including the GNU Public Licence.]
  */
 
-#ifndef HEADER_MD5_H
-# define HEADER_MD5_H
+#include <stddef.h>
 
-# include <openssl/e_os2.h>
-# include <stddef.h>
+#ifndef HEADER_MD5_H
+#define HEADER_MD5_H
+
+#include <openssl/opensslconf.h>
+
+#if !defined(HAVE_ATTRIBUTE__BOUNDED__) && !defined(__OpenBSD__)
+#define __bounded__(x, y, z)
+#endif
 
 #ifdef  __cplusplus
 extern "C" {
 #endif
 
-# ifdef OPENSSL_NO_MD5
-#  error MD5 is disabled.
-# endif
+#define MD5_LONG unsigned int
 
-/*
- * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- * ! MD5_LONG has to be at least 32 bits wide. If it's wider, then !
- * ! MD5_LONG_LOG2 has to be defined along.                        !
- * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- */
-
-# if defined(__LP32__)
-#  define MD5_LONG unsigned long
-# elif defined(OPENSSL_SYS_CRAY) || defined(__ILP64__)
-#  define MD5_LONG unsigned long
-#  define MD5_LONG_LOG2 3
-/*
- * _CRAY note. I could declare short, but I have no idea what impact
- * does it have on performance on none-T3E machines. I could declare
- * int, but at least on C90 sizeof(int) can be chosen at compile time.
- * So I've chosen long...
- *                                      <appro@fy.chalmers.se>
- */
-# else
-#  define MD5_LONG unsigned int
-# endif
-
-# define MD5_CBLOCK      64
-# define MD5_LBLOCK      (MD5_CBLOCK/4)
-# define MD5_DIGEST_LENGTH 16
+#define MD5_CBLOCK	64
+#define MD5_LBLOCK	(MD5_CBLOCK/4)
+#define MD5_DIGEST_LENGTH 16
 
 typedef struct MD5state_st {
-    MD5_LONG A, B, C, D;
-    MD5_LONG Nl, Nh;
-    MD5_LONG data[MD5_LBLOCK];
-    unsigned int num;
+	MD5_LONG A, B,C, D;
+	MD5_LONG Nl, Nh;
+	MD5_LONG data[MD5_LBLOCK];
+	unsigned int num;
 } MD5_CTX;
 
-# ifdef OPENSSL_FIPS
-int private_MD5_Init(MD5_CTX *c);
-# endif
 int MD5_Init(MD5_CTX *c);
-int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+int MD5_Update(MD5_CTX *c, const void *data, size_t len)
+    __attribute__ ((__bounded__(__buffer__, 2, 3)));
 int MD5_Final(unsigned char *md, MD5_CTX *c);
-unsigned char *MD5(const unsigned char *d, size_t n, unsigned char *md);
+unsigned char *MD5(const unsigned char *d, size_t n, unsigned char *md)
+    __attribute__ ((__bounded__(__buffer__, 1, 2)))
+    __attribute__ ((__nonnull__(3)));
 void MD5_Transform(MD5_CTX *c, const unsigned char *b);
 #ifdef  __cplusplus
 }

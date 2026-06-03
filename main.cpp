@@ -2,21 +2,11 @@
 #include <openssl/bn.h>
 #include <openssl/ec.h>
 #include <openssl/sha.h>
-#include <assert.h>
 #include <keygen_interface.h>
 
 #define FIELD_BITS 384
 #define FIELD_BYTES 48
 uint8_t cset[] = "BCDFGHJKMPQRTVWXY2346789";
-
-
-static void unpack(uint32_t *pid, uint32_t *hash, uint32_t *sig, uint32_t *raw)
-{
-	pid[0] = raw[0] & 0x7fffffff;
-	hash[0] = ((raw[0] >> 31) | (raw[1] << 1)) & 0xfffffff;
-	sig[0] = (raw[1] >> 27) | (raw[2] << 5);
-	sig[1] = (raw[2] >> 27) | (raw[3] << 5);
-}
 
 static void pack(uint32_t *raw, uint32_t *pid, uint32_t *hash, uint32_t *sig)
 {
@@ -37,26 +27,7 @@ static void endian(uint8_t *data, int len)
 	}
 }
 
-void unbase24(uint32_t *x, uint8_t *c)
-{
 
-	memset(x, 0, 16);
-	int i, n;
-
-	BIGNUM *y = BN_new();
-	BN_zero(y);
-	
-	for (i = 0; i < 25; i++)
-	{
-		BN_mul_word(y, 24);
-		BN_add_word(y, c[i]);
-	}
-	n = BN_num_bytes(y);
-	BN_bn2bin(y, (uint8_t *)x);
-	BN_free(y);
-	
-	endian((uint8_t *)x, n);
-}
 
 void base24(uint8_t *c, uint32_t *x)
 {
@@ -79,143 +50,61 @@ void base24(uint8_t *c, uint32_t *x)
 	BN_free(z);
 }
 
-void verify(EC_GROUP *ec, EC_POINT *generator, EC_POINT *public_key, char *cdkey)
-{
-	uint8_t key[25];
-	int i, j, k;
 
-	BN_CTX *ctx = BN_CTX_new();
-	for (i = 0, k = 0; i < strlen(cdkey); i++) {
-		for (j = 0; j < 24; j++) {
-			if (cdkey[i] != '-' && cdkey[i] == cset[j]) {
-				key[k++] = j;
-				break;
-			}
-			assert(j < 24);
-		}
-		if (k >= 25) break;
-	}
-	
-	uint32_t bkey[4] = {0};
-	uint32_t pid[1], hash[1], sig[2];
-	unbase24(bkey, key);
- 
-	unpack(pid, hash, sig, bkey);
-	
-	BIGNUM *e, *s;
-	
-	e = BN_new();
-	BN_set_word(e, hash[0]);
-	endian((uint8_t *)sig, sizeof(sig));
-	s = BN_bin2bn((uint8_t *)sig, sizeof(sig), NULL);
-	
-	BIGNUM *x = BN_new();
-	BIGNUM *y = BN_new();
-	EC_POINT *u = EC_POINT_new(ec);
-	EC_POINT *v = EC_POINT_new(ec);
-	
-	EC_POINT_mul(ec, u, NULL, generator, s, ctx);
-	EC_POINT_mul(ec, v, NULL, public_key, e, ctx);
-	EC_POINT_add(ec, v, u, v, ctx);
-	EC_POINT_get_affine_coordinates_GFp(ec, v, x, y, ctx);
-	
-	uint8_t buf[FIELD_BYTES], md[20];
-	uint32_t h;
-	uint8_t t[4];
-	SHA_CTX h_ctx;
-	
-	SHA1_Init(&h_ctx);
-	t[0] =  pid[0] & 0xff;
-	t[1] = (pid[0] & 0xff00) >> 8;
-	t[2] = (pid[0] & 0xff0000) >> 16;
-	t[3] = (pid[0] & 0xff000000) >> 24;
-	SHA1_Update(&h_ctx, t, sizeof(t));
-	
-	memset(buf, 0, sizeof(buf));
-	BN_bn2bin(x, buf);
-	endian((uint8_t *)buf, sizeof(buf));
-	SHA1_Update(&h_ctx, buf, sizeof(buf));
-	
-	memset(buf, 0, sizeof(buf));
-	BN_bn2bin(y, buf);
-	endian((uint8_t *)buf, sizeof(buf));
-	SHA1_Update(&h_ctx, buf, sizeof(buf));
-	
-	SHA1_Final(md, &h_ctx);
-	h = (md[0] | (md[1] << 8) | (md[2] << 16) | (md[3] << 24)) >> 4;
-	h &= 0xfffffff;
-	
-	putchar('\n');
-	
-	BN_free(e);
-	BN_free(s);
-	BN_free(x);
-	BN_free(y);
-	EC_POINT_free(u);
-	EC_POINT_free(v);
-
-	BN_CTX_free(ctx);
-}
 
 void generate(uint8_t *pkey, EC_GROUP *ec, EC_POINT *generator, BIGNUM *order, BIGNUM *priv, uint32_t *pid)
 {
 	BN_CTX *ctx = BN_CTX_new();
-
-	BIGNUM *k = BN_new();
-	BIGNUM *s = BN_new();
-	BIGNUM *x = BN_new();
-	BIGNUM *y = BN_new();
-	EC_POINT *r = EC_POINT_new(ec);
-	uint32_t bkey[4];
-
-	do {
-		BN_pseudo_rand(k, FIELD_BITS, -1, 0);
-		EC_POINT_mul(ec, r, NULL, generator, k, ctx);
-		EC_POINT_get_affine_coordinates_GFp(ec, r, x, y, ctx);
-		
-		SHA_CTX h_ctx;
-		uint8_t t[4], md[20], buf[FIELD_BYTES];
-		uint32_t hash[1];
-		SHA1_Init(&h_ctx);
-		t[0] =  pid[0] & 0xff;
-		t[1] = (pid[0] & 0xff00) >> 8;
-		t[2] = (pid[0] & 0xff0000) >> 16;
-		t[3] = (pid[0] & 0xff000000) >> 24;
-		SHA1_Update(&h_ctx, t, sizeof(t));
-		
-		memset(buf, 0, sizeof(buf));
-		BN_bn2bin(x, buf);
-		endian((uint8_t *)buf, sizeof(buf));
-		SHA1_Update(&h_ctx, buf, sizeof(buf));
-		
-		memset(buf, 0, sizeof(buf));
-		BN_bn2bin(y, buf);
-		endian((uint8_t *)buf, sizeof(buf));
-		SHA1_Update(&h_ctx, buf, sizeof(buf));
-		
-		SHA1_Final(md, &h_ctx);
-		hash[0] = (md[0] | (md[1] << 8) | (md[2] << 16) | (md[3] << 24)) >> 4;
-		hash[0] &= 0xfffffff;
-		
-		BN_copy(s, priv);
-		BN_mul_word(s, hash[0]);
-		BN_mod_add(s, s, k, order, ctx);
-		
-		uint32_t sig[2] = {0};
-		BN_bn2bin(s, (uint8_t *)sig);
-		endian((uint8_t *)sig, BN_num_bytes(s));
-		pack(bkey, pid, hash, sig);
-	} while (bkey[3] >= 0x40000);
-
-	base24(pkey, bkey);
+        BIGNUM *k = BN_new(), *s = BN_new(), *x = BN_new(), *y = BN_new();
+        EC_POINT *r = EC_POINT_new(ec);
 	
-	BN_free(k);
-	BN_free(s);
-	BN_free(x);
-	BN_free(y);
-	EC_POINT_free(r);
+	uint32_t bkey[4], hash[1];
+        uint8_t buf[FIELD_BYTES], md[20];
+        SHA_CTX h_ctx;
 
-	BN_CTX_free(ctx);
+	uint8_t t[4];
+        t[0] = pid[0] & 0xff;
+        t[1] = (pid[0] & 0xff00) >> 8;
+        t[2] = (pid[0] & 0xff0000) >> 16;
+        t[3] = (pid[0] & 0xff000000) >> 24;
+
+do {
+        	BN_pseudo_rand(k, FIELD_BITS, -1, 0);
+        	EC_POINT_mul(ec, r, NULL, generator, k, ctx);
+        	EC_POINT_get_affine_coordinates_GFp(ec, r, x, y, ctx);
+        
+        	SHA1_Init(&h_ctx);
+        	SHA1_Update(&h_ctx, t, 4);
+
+        	memset(buf, 0, FIELD_BYTES); // Sicher ist sicher
+        	BN_bn2bin(x, buf);
+        	endian(buf, FIELD_BYTES);
+        	SHA1_Update(&h_ctx, buf, FIELD_BYTES);
+        
+        	memset(buf, 0, FIELD_BYTES);
+        	BN_bn2bin(y, buf);
+        	endian(buf, FIELD_BYTES);
+        	SHA1_Update(&h_ctx, buf, FIELD_BYTES);
+        
+	        SHA1_Final(md, &h_ctx);
+        	hash[0] = ((md[0] | (md[1] << 8) | (md[2] << 16) | (md[3] << 24)) >> 4) & 0xfffffff;
+        
+        	BN_copy(s, priv);
+        	BN_mul_word(s, hash[0]);
+        	BN_mod_add(s, s, k, order, ctx);
+        
+        	uint32_t sig[2] = {0};
+        	int sig_len = BN_bn2bin(s, (uint8_t *)sig);
+        	endian((uint8_t *)sig, sig_len);
+        
+        	pack(bkey, pid, hash, sig);
+    	} while (bkey[3] >= 0x40000);
+
+    	base24(pkey, bkey);
+	
+	BN_free(k); BN_free(s); BN_free(x); BN_free(y);
+    	EC_POINT_free(r);
+    	BN_CTX_free(ctx);
 }
 
 

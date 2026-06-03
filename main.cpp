@@ -1,28 +1,8 @@
-/*
-	Windows XP CD Key Verification/Generator v0.03
-	by z22
-	
-	Compile with OpenSSL libs, modify to suit your needs.
-	http://gnuwin32.sourceforge.net/packages/openssl.htm
-
-	History:
-	0.03	Stack corruptionerror on exit fixed (now pkey is large enough)
-			More Comments added
-	0.02	Changed name the *.cpp;
-			Fixed minor bugs & Make it compilable on VC++
-	0.01	First version compilable MingW
-
-
-*/
-
-#include <stdio.h>
 #include <string.h>
 #include <openssl/bn.h>
 #include <openssl/ec.h>
 #include <openssl/sha.h>
 #include <assert.h>
-#include <stdint.h>
-#include <stdlib.h>
 #include <keygen_interface.h>
 
 #define FIELD_BITS 384
@@ -32,13 +12,8 @@ uint8_t cset[] = "BCDFGHJKMPQRTVWXY2346789";
 
 static void unpack(uint32_t *pid, uint32_t *hash, uint32_t *sig, uint32_t *raw)
 {
- // pid = Bit 0..30 
 	pid[0] = raw[0] & 0x7fffffff;
- 
- // hash(s) = Bit 31..58
 	hash[0] = ((raw[0] >> 31) | (raw[1] << 1)) & 0xfffffff;
- 
- // sig(e) = bit 58..113
 	sig[0] = (raw[1] >> 27) | (raw[2] << 5);
 	sig[1] = (raw[2] >> 27) | (raw[3] << 5);
 }
@@ -51,7 +26,6 @@ static void pack(uint32_t *raw, uint32_t *pid, uint32_t *hash, uint32_t *sig)
 	raw[3] = sig[1] >> 5;
 }
 
-// Reverse data
 static void endian(uint8_t *data, int len)
 {
 	int i;
@@ -90,14 +64,12 @@ void base24(uint8_t *c, uint32_t *x)
 	int i;
 	BIGNUM *z;
 
- // Convert x to BigNum z
-	memcpy(y, x, sizeof(y));				// Copy X to Y; Y=X
-	for (i = 15; y[i] == 0; i--) {} i++;	// skip following nulls
-	endian(y, i);							// Reverse y
- 	z = BN_bin2bn(y, i, NULL);				// Convert y to BigNum z
 
+	memcpy(y, x, sizeof(y));
+	for (i = 15; y[i] == 0; i--) {} i++;
+	endian(y, i);
+ 	z = BN_bin2bn(y, i, NULL);
 
- // Divide z by 24 and convert remainder with cset to Base24-CDKEY Char
 	c[25] = 0;
 	for (i = 24; i >= 0; i--) {
 		uint8_t t = BN_div_word(z, 24);
@@ -107,52 +79,12 @@ void base24(uint8_t *c, uint32_t *x)
 	BN_free(z);
 }
 
-void print_product_id(uint32_t *pid)
-{
-	char raw[12];
-	char b[6], c[8];
-	int i, digit = 0;
-	
- //	Cut a away last bit of pid and convert it to an accii-number (=raw)
-	sprintf(raw, "%d", pid[0] >> 1);
- 
- // Make b-part {640-....}
-	strncpy(b, raw, 3);
-	b[3] = 0;
-
- // Make c-part {...-123456X...}
-	strcpy(c, raw + 3);
-
- // Make checksum digit-part {...56X-}
-	assert(strlen(c) == 6);
-	for (i = 0; i < 6; i++) 
-		digit -= c[i] - '0';	// Sum digits
-
-	while (digit < 0) 
-		digit += 7;
-	c[6] = digit + '0';
-	c[7] = 0;
-	
-	printf("Product ID: 55274-%s-%s-23xxx\n", b, c);
-}
-
-void print_product_key(uint8_t *pk)
-{
-	int i;
-	assert(strlen((const char *)pk) == 25);
-	for (i = 0; i < 25; i++) {
-		putchar(pk[i]);
-		if (i != 24 && i % 5 == 4) putchar('-');
-	}
-}
-
 void verify(EC_GROUP *ec, EC_POINT *generator, EC_POINT *public_key, char *cdkey)
 {
 	uint8_t key[25];
 	int i, j, k;
 
 	BN_CTX *ctx = BN_CTX_new();
-// remove Dashs from CDKEY
 	for (i = 0, k = 0; i < strlen(cdkey); i++) {
 		for (j = 0; j < 24; j++) {
 			if (cdkey[i] != '-' && cdkey[i] == cset[j]) {
@@ -164,24 +96,14 @@ void verify(EC_GROUP *ec, EC_POINT *generator, EC_POINT *public_key, char *cdkey
 		if (k >= 25) break;
 	}
 	
- // Base24_CDKEY -> Bin_CDKEY
 	uint32_t bkey[4] = {0};
 	uint32_t pid[1], hash[1], sig[2];
 	unbase24(bkey, key);
  
- // Output Bin_CDKEY
-	printf("%.8x %.8x %.8x %.8x\n", bkey[3], bkey[2], bkey[1], bkey[0]);
-
- // Divide/Extract pid_data, hash, sig  from Bin_CDKEY
 	unpack(pid, hash, sig, bkey);
-	print_product_id(pid);
-	
-	printf("PID: %.8x\nHash: %.8x\nSig: %.8x %.8x\n", pid[0], hash[0], sig[1], sig[0]);
-
 	
 	BIGNUM *e, *s;
 	
-	/* e = hash, s = sig */
 	e = BN_new();
 	BN_set_word(e, hash[0]);
 	endian((uint8_t *)sig, sizeof(sig));
@@ -192,7 +114,6 @@ void verify(EC_GROUP *ec, EC_POINT *generator, EC_POINT *public_key, char *cdkey
 	EC_POINT *u = EC_POINT_new(ec);
 	EC_POINT *v = EC_POINT_new(ec);
 	
-	/* v = s*generator + e*(-public_key) */
 	EC_POINT_mul(ec, u, NULL, generator, s, ctx);
 	EC_POINT_mul(ec, v, NULL, public_key, e, ctx);
 	EC_POINT_add(ec, v, u, v, ctx);
@@ -203,7 +124,6 @@ void verify(EC_GROUP *ec, EC_POINT *generator, EC_POINT *public_key, char *cdkey
 	uint8_t t[4];
 	SHA_CTX h_ctx;
 	
-	/* h = (fist 32 bits of SHA1(pid || v.x, v.y)) >> 4 */
 	SHA1_Init(&h_ctx);
 	t[0] =  pid[0] & 0xff;
 	t[1] = (pid[0] & 0xff00) >> 8;
@@ -225,9 +145,6 @@ void verify(EC_GROUP *ec, EC_POINT *generator, EC_POINT *public_key, char *cdkey
 	h = (md[0] | (md[1] << 8) | (md[2] << 16) | (md[3] << 24)) >> 4;
 	h &= 0xfffffff;
 	
-	printf("Calculated hash: %.8x\n", h);
-	if (h == hash[0]) printf("Key valid\n");
-	else printf("Key invalid\n");
 	putchar('\n');
 	
 	BN_free(e);
@@ -251,7 +168,6 @@ void generate(uint8_t *pkey, EC_GROUP *ec, EC_POINT *generator, BIGNUM *order, B
 	EC_POINT *r = EC_POINT_new(ec);
 	uint32_t bkey[4];
 
- // Loop in case signaturepart will make cdkey(base-24 "digits") longer than 25 
 	do {
 		BN_pseudo_rand(k, FIELD_BITS, -1, 0);
 		EC_POINT_mul(ec, r, NULL, generator, k, ctx);
@@ -260,7 +176,6 @@ void generate(uint8_t *pkey, EC_GROUP *ec, EC_POINT *generator, BIGNUM *order, B
 		SHA_CTX h_ctx;
 		uint8_t t[4], md[20], buf[FIELD_BYTES];
 		uint32_t hash[1];
-		/* h = (fist 32 bits of SHA1(pid || r.x, r.y)) >> 4 */
 		SHA1_Init(&h_ctx);
 		t[0] =  pid[0] & 0xff;
 		t[1] = (pid[0] & 0xff00) >> 8;
@@ -282,7 +197,6 @@ void generate(uint8_t *pkey, EC_GROUP *ec, EC_POINT *generator, BIGNUM *order, B
 		hash[0] = (md[0] | (md[1] << 8) | (md[2] << 16) | (md[3] << 24)) >> 4;
 		hash[0] &= 0xfffffff;
 		
-		/* s = priv*h + k */
 		BN_copy(s, priv);
 		BN_mul_word(s, hash[0]);
 		BN_mod_add(s, s, k, order, ctx);
@@ -291,7 +205,6 @@ void generate(uint8_t *pkey, EC_GROUP *ec, EC_POINT *generator, BIGNUM *order, B
 		BN_bn2bin(s, (uint8_t *)sig);
 		endian((uint8_t *)sig, BN_num_bytes(s));
 		pack(bkey, pid, hash, sig);
-		printf("PID: %.8x\nHash: %.8x\nSig: %.8x %.8x\n", pid[0], hash[0], sig[1], sig[0]);
 	} while (bkey[3] >= 0x40000);
 
 	base24(pkey, bkey);
@@ -307,7 +220,6 @@ void generate(uint8_t *pkey, EC_GROUP *ec, EC_POINT *generator, BIGNUM *order, B
 
 
 extern "C" void generate_key_interface(char* buffer) {
-    // 1. Initialisierungs-Logik (wie in deiner main())
     BIGNUM *a = BN_new(), *b = BN_new(), *p = BN_new(), *gx = BN_new(), *gy = BN_new();
     BIGNUM *n = BN_new(), *priv = BN_new();
     BN_CTX *ctx = BN_CTX_new();
@@ -323,14 +235,11 @@ extern "C" void generate_key_interface(char* buffer) {
     EC_POINT *g = EC_POINT_new(ec);
     EC_POINT_set_affine_coordinates_GFp(ec, g, gx, gy, ctx);
 
-    // 2. Variable für den Key
     uint8_t pkey[26];
     uint32_t pid[1] = { 640000000 << 1 };
 
-    // 3. DEINE ORIGINAL-FUNKTION NUTZEN
     generate(pkey, ec, g, n, priv, pid);
 
-    // 4. In den Buffer schreiben (Formatierung)
     int j = 0;
     for (int i = 0; i < 25; i++) {
         buffer[j++] = (char)pkey[i];
@@ -338,7 +247,6 @@ extern "C" void generate_key_interface(char* buffer) {
     }
     buffer[j] = '\0';
 
-    // Cleanup
     EC_POINT_free(g); EC_GROUP_free(ec);
     BN_free(a); BN_free(b); BN_free(p); BN_free(gx); BN_free(gy); BN_free(n); BN_free(priv);
     BN_CTX_free(ctx);

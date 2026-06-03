@@ -1,2 +1,2 @@
-gcc -c main_c.c -o main_c.o
-g++ -c main_cpp.cpp -o main_cpp.o
+gcc -c main.c -o main_c.o -Os -ffunction-sections -fdata-sections
+g++ -c main.cpp -o main_cpp.o -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti

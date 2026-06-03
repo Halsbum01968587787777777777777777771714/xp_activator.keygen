@@ -8,6 +8,7 @@
 #include <commctrl.h>
 #include <stdint.h>
 #include <intrin.h>
+#include <aero_helper.h>
 #include <keygen_interface.h>
 #include "resource.h"
 #include <stdio.h>
@@ -676,18 +677,13 @@ static void PutIdToSystem(HWND hDlg)
 INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg) {
-	case WM_CTLCOLORSTATIC: {
-		HDC hdc = (HDC)wParam;
-		SetTextColor(hdc, RGB(0,0,0));
-		SetBkColor(hdc, GetSysColor(COLOR_3DFACE));
-		return (LRESULT)GetSysColorBrush(COLOR_3DFACE);
-	}
 	case WM_CTLCOLOREDIT: {
 		HDC hdc = (HDC)wParam;
 		SetTextColor(hdc, RGB(0,0,0));
 		SetBkColor(hdc, GetSysColor(COLOR_3DFACE));
 		return (LRESULT)GetSysColorBrush(COLOR_3DFACE);
 	}
+		
 	case WM_INITDIALOG: {
 		EnableWindow(GetDlgItem(hDlg, 104), FALSE);
 		HBITMAP hImg = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_KEY_BITMAP),
@@ -742,6 +738,8 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				}
 			}
 			break;
+		case 106:
+			EnableAeroGlass(hDlg);
 		}
 		}
 		return TRUE;

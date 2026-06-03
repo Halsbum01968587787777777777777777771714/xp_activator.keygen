@@ -1,2 +1,1 @@
-cd ~dp0
 g++ main_c.o main_cpp.o resource.res -o activatorxp.exe -static -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -Wl,--gc-sections -Wl,--strip-all -Wl,--build-id=none -L"lib" -lssl -lcrypto -lcomctl32 -luser32 -lole32 -loleaut32 -lgdi32 -lkernel32 -luxtheme -mwindows

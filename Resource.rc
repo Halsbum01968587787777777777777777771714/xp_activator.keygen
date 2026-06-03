@@ -65,6 +65,8 @@ BEGIN
     CTEXT           "Код подтверждения:", -1, 2, 68, 58, 10
     EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Сказать системе", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Включить прозрачный шрифт", 106, 5, 82, 108, 12
+    CTEXT           "*Примечание: Экспериментально, требуется Vista или выше", -1, 115, 82, 158, 80 
 END
 
 
@@ -131,6 +133,8 @@ BEGIN
     CTEXT           "Confirmation ID:", -1, 2, 68, 58, 10
     EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Enable transparent font", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Experimental and requires Vista or later", -1, 115, 82, 158, 80
 END
 
 
@@ -170,7 +174,7 @@ LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 // Dialog
 //
 
-100 DIALOGEX 0, 0, 410, 100
+100 DIALOGEX 0, 0, 410, 110
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
 CAPTION "Windows XP Aktivator"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
@@ -185,6 +189,8 @@ BEGIN
     CTEXT           "Bestaetigungs-ID:",-1,2,68,58,10
     EDITTEXT        103,60,68,250,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Im System speichern",104,314,68,74,12
+    PUSHBUTTON      "Aktiviere Transparente Schrift",106,5,82,108,12
+    CTEXT           "*Hinweis: Experimentel und benoetigt Vista",-1,115,82,158,80
 END
 
 /////////////////////////////////////////////////////////////////////////////
@@ -229,6 +235,8 @@ BEGIN
     CTEXT           "ID de confirmación:", -1, 2, 68, 58, 10
     EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Guardar en sistema", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Activar fuente transparente", 106, 5, 82, 108, 12
+    CTEXT           "*Nota: Experimental y requiere Vista o superior", -1, 115, 82, 158, 80
 END
 
 STRINGTABLE
@@ -268,6 +276,8 @@ BEGIN
     CTEXT           "Confirmation ID:", -1, 2, 68, 58, 10
     EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Enable transparent font", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Experimental and requires Vista or later", -1, 115, 82, 158, 80
 END
 
 STRINGTABLE
@@ -307,6 +317,8 @@ BEGIN
     CTEXT           "Confirmation ID:", -1, 2, 38, 68, 10
     EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Enable transparent font", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Experimental and requires Vista or later", -1, 115, 82, 158, 80
 END
 
 STRINGTABLE

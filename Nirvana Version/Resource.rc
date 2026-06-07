@@ -1,0 +1,700 @@
+﻿// Microsoft Visual C++ generated resource script.
+1 24 "xp_activate32.manifest"
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Активатор Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Ваш ключ:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Генерировать ключ", 105, 314, 40, 74, 12
+    CTEXT           "Код установки:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Спросить у системы", 102, 314, 54, 74, 12
+    CTEXT           "Код подтверждения:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Сказать системе", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Включить прозрачный шрифт", 106, 5, 82, 108, 12
+    CTEXT           "*Примечание: Экспериментально, требуется Vista или выше", -1, 115, 82, 158, 80 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    ".\\keys.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       "Успешная активация"
+    1                       "жду код установки..."
+    2                       "код слишком длинный"
+    3                       "неправильный символ"
+    4                       "ошибка в проверочной цифре"
+    5                       "неизвестная версия кода"
+    6                       "ну очень невезучий код"
+    7                       "говорю с системой..."
+    8                       "Ошибка"
+    9                       "Информация"
+    10                      "Не получилось инициализировать менеджер лицензий"
+    11                      "Не получилось проверить статус активации"
+    12                      "Менеджер лицензий считает систему уже активированной"
+    13                      "Менеджер лицензий вернул ошибку"
+END
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Your Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generate Key", 105, 314, 40, 74, 12
+    CTEXT           "Installation ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Get from the system", 102, 314, 54, 74, 12
+    CTEXT           "Confirmation ID:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Enable transparent font", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Experimental and requires Vista or later", -1, 115, 82, 158, 80
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       "Successful activation"
+    1                       "waiting for input..."
+    2                       "ID is too large"
+    3                       "invalid character"
+    4                       "invalid check digit"
+    5                       "unknown version of ID"
+    6                       "this ID is really unlucky"
+    7                       "talking to the system..."
+    8                       "Error"
+    9                       "Information"
+    10                      "Failed to initialize license manager"
+    11                      "Failed to check activation status"
+    12                      "License manager says that the system is already activated"
+    13                      "License manager has failed"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+
+/////////////////////////////////////////////////////////////////////////////
+// Dialog
+//
+
+100 DIALOGEX 0, 0, 410, 110
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Aktivator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Ihr Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Key generieren", 105, 314, 40, 74, 12
+    CTEXT           "Installations-ID:",-1,2,54,58,10
+    EDITTEXT        101,60,54,250,12,ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Vom System abrufen",102,314,54,74,12
+    CTEXT           "Bestaetigungs-ID:",-1,2,68,58,10
+    EDITTEXT        103,60,68,250,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Im System speichern",104,314,68,74,12
+    PUSHBUTTON      "Aktiviere Transparente Schrift",106,5,82,108,12
+    CTEXT           "*Hinweis: Experimentel und benoetigt Vista",-1,115,82,158,80
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       "Erfolgreiche Aktivierung"
+    1                       "Warte auf Eingabe..."
+    2                       "ID ist zu lang"
+    3                       "Ungueltiges Zeichen"
+    4                       "Ungueltige Pruefziffer"
+    5                       "Unbekannte ID-Version"
+    6                       "Diese ID ist sehr unglücklich"
+    7                       "Kommuniziere mit dem System..."
+    8                       "Fehler"
+    9                       "Information"
+    10                      "Initialisierung des Lizenzmanagers fehlgeschlagen"
+    11                      "Überprüfung des Aktivierungsstatus fehlgeschlagen"
+    12                      "Lizenzmanager meldet: System bereits aktiviert"
+    13                      "Lizenzmanager hat einen Fehler gemeldet"
+END
+
+#endif    // German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESP)
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Activador de Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Su clave:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generar clave", 105, 314, 40, 74, 12
+    CTEXT           "ID de instalación:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Obtener del sistema", 102, 314, 54, 74, 12
+    CTEXT           "ID de confirmación:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Guardar en sistema", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Activar fuente transparente", 106, 5, 82, 108, 12
+    CTEXT           "*Nota: Experimental y requiere Vista o superior", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Activación exitosa"
+    1   "Esperando entrada..."
+    2   "ID demasiado largo"
+    3   "Carácter no válido"
+    4   "Dígito de control no válido"
+    5   "Versión de ID desconocida"
+    6   "Esta ID es muy desafortunada"
+    7   "Comunicando con el sistema..."
+    8   "Error"
+    9   "Información"
+    10  "Error al inicializar el gestor de licencias"
+    11  "Error al comprobar el estado de activación"
+    12  "El gestor de licencias indica que el sistema ya está activado"
+    13  "El gestor de licencias ha devuelto un error"
+END
+#endif
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Your Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generate Key", 105, 314, 40, 74, 12
+    CTEXT           "Installation ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Get from the system", 102, 314, 54, 74, 12
+    CTEXT           "Confirmation ID:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Enable transparent font", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Experimental and requires Vista or later", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Successful activation"
+    1   "Waiting for input..."
+    2   "ID is too long"
+    3   "Invalid character"
+    4   "Invalid check digit"
+    5   "Unknown ID version"
+    6   "This ID is really unlucky"
+    7   "Talking to the system..."
+    8   "Error"
+    9   "Information"
+    10  "Failed to initialise licence manager"
+    11  "Failed to check activation status"
+    12  "Licence manager says that the system is already activated"
+    13  "Licence manager has failed"
+END
+#endif
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Your Key:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generate Key", 105, 314, 40, 74, 12
+    CTEXT           "Installation ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Get from the system", 102, 314, 54, 74, 12
+    CTEXT           "Confirmation ID:", -1, 2, 38, 68, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Store to the system", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Enable transparent font", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Experimental and requires Vista or later", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Successful activation"
+    1   "Waiting for input..."
+    2   "ID is too long"
+    3   "Invalid character"
+    4   "Invalid check digit"
+    5   "Unknown ID version"
+    6   "This ID is really unlucky"
+    7   "Talking to the system..."
+    8   "Error"
+    9   "Information"
+    10  "Failed to initialize license manager"
+    11  "Failed to check activation status"
+    12  "License manager says that the system is already activated"
+    13  "License manager has failed"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Französisch (Frankreich)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Activateur Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Votre clé:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Générer la clé", 105, 314, 40, 74, 12
+    CTEXT           "ID d'installation:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Récupérer du système", 102, 314, 54, 74, 12
+    CTEXT           "ID de confirmation:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Enregistrer dans le système", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Activer police transparente", 106, 5, 82, 108, 12
+    CTEXT           "*Note: Expérimental, nécessite Vista ou ultérieur", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Activation réussie"
+    1   "En attente d'entrée..."
+    2   "ID trop long"
+    3   "Caractère invalide"
+    4   "Chiffre de contrôle invalide"
+    5   "Version d'ID inconnue"
+    6   "Cet ID n'est vraiment pas de chance"
+    7   "Communication avec le système..."
+    8   "Erreur"
+    9   "Information"
+    10  "Échec de l'initialisation du gestionnaire de licences"
+    11  "Échec de la vérification de l'état d'activation"
+    12  "Le gestionnaire de licences indique que le système est déjà activé"
+    13  "Le gestionnaire de licences a retourné une erreur"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Italienisch (Italien)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ITA)
+LANGUAGE LANG_ITALIAN, SUBLANG_ITALIAN
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Attivatore Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "La tua chiave:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Genera chiave", 105, 314, 40, 74, 12
+    CTEXT           "ID installazione:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Ottieni dal sistema", 102, 314, 54, 74, 12
+    CTEXT           "ID conferma:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Salva nel sistema", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Attiva font trasparente", 106, 5, 82, 108, 12
+    CTEXT           "*Nota: Sperimentale, richiede Vista o superiore", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Attivazione riuscita"
+    1   "In attesa di input..."
+    2   "ID troppo lungo"
+    3   "Carattere non valido"
+    4   "Cifra di controllo non valida"
+    5   "Versione ID sconosciuta"
+    6   "Questo ID è davvero sfortunato"
+    7   "Comunicazione con il sistema..."
+    8   "Errore"
+    9   "Informazione"
+    10  "Inizializzazione gestore licenze fallita"
+    11  "Verifica stato attivazione fallita"
+    12  "Il gestore licenze indica che il sistema è già attivato"
+    13  "Il gestore licenze ha restituito un errore"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Portugiesisch (Brasilien)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PTB)
+LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE_BRAZILIAN
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Ativador do Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Sua chave:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Gerar chave", 105, 314, 40, 74, 12
+    CTEXT           "ID de instalação:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Obter do sistema", 102, 314, 54, 74, 12
+    CTEXT           "ID de confirmação:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Salvar no sistema", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Ativar fonte transparente", 106, 5, 82, 108, 12
+    CTEXT           "*Nota: Experimental, requer Vista ou superior", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Ativação bem-sucedida"
+    1   "Aguardando entrada..."
+    2   "ID muito longo"
+    3   "Caractere inválido"
+    4   "Dígito de verificação inválido"
+    5   "Versão de ID desconhecida"
+    6   "Este ID é muito azarado"
+    7   "Comunicando com o sistema..."
+    8   "Erro"
+    9   "Informação"
+    10  "Falha ao inicializar o gerenciador de licenças"
+    11  "Falha ao verificar status de ativação"
+    12  "O gerenciador de licenças diz que o sistema já está ativado"
+    13  "O gerenciador de licenças retornou um erro"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Niederländisch (Niederlande)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NLD)
+LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Activator"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Uw sleutel:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Genereer sleutel", 105, 314, 40, 74, 12
+    CTEXT           "Installatie-ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Haal uit systeem", 102, 314, 54, 74, 12
+    CTEXT           "Bevestigings-ID:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Opslaan in systeem", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Schakel transparant font in", 106, 5, 82, 108, 12
+    CTEXT           "*Opmerking: Experimenteel, vereist Vista of later", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Activatie geslaagd"
+    1   "Wachten op invoer..."
+    2   "ID is te lang"
+    3   "Ongeldig teken"
+    4   "Ongeldig controlecijfer"
+    5   "Onbekende ID-versie"
+    6   "Deze ID heeft echt pech"
+    7   "Communiceren met het systeem..."
+    8   "Fout"
+    9   "Informatie"
+    10  "Initialisatie van licentiebeheerder mislukt"
+    11  "Controle van activatiestatus mislukt"
+    12  "Licentiebeheerder zegt dat het systeem al is geactiveerd"
+    13  "Licentiebeheerder heeft een fout gemeld"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Schwedisch (Schweden)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
+LANGUAGE LANG_SWEDISH, SUBLANG_SWEDISH
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP-aktiverare"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Din nyckel:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generera nyckel", 105, 314, 40, 74, 12
+    CTEXT           "Installations-ID:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Hämta från systemet", 102, 314, 54, 74, 12
+    CTEXT           "Bekräftelse-ID:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Spara i systemet", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Aktivera transparent typsnitt", 106, 5, 82, 108, 12
+    CTEXT           "*Notera: Experimentellt, kräver Vista eller senare", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Aktivering lyckades"
+    1   "Väntar på input..."
+    2   "ID är för långt"
+    3   "Ogiltigt tecken"
+    4   "Ogiltig kontrollsiffra"
+    5   "Okänd ID-version"
+    6   "Detta ID är väldigt olyckligt"
+    7   "Kommunicerar med systemet..."
+    8   "Fel"
+    9   "Information"
+    10  "Kunde inte initiera licenshanteraren"
+    11  "Kunde inte kontrollera aktiveringsstatus"
+    12  "Licenshanteraren säger att systemet redan är aktiverat"
+    13  "Licenshanteraren returnerade ett fel"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Türkisch (Türkei)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_TRK)
+LANGUAGE LANG_TURKISH, SUBLANG_DEFAULT
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows XP Etkinleştirici"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Anahtarınız:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Anahtar Oluştur", 105, 314, 40, 74, 12
+    CTEXT           "Kurulum Kimliği:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Sistemden Al", 102, 314, 54, 74, 12
+    CTEXT           "Onay Kimliği:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Sisteme Kaydet", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Şeffaf yazı tipini etkinleştir", 106, 5, 82, 108, 12
+    CTEXT           "*Not: Deneysel, Vista veya üstü gerekir", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Etkinleştirme başarılı"
+    1   "Girdi bekleniyor..."
+    2   "Kimlik çok uzun"
+    3   "Geçersiz karakter"
+    4   "Geçersiz kontrol rakamı"
+    5   "Bilinmeyen kimlik sürümü"
+    6   "Bu kimlik gerçekten şanssız"
+    7   "Sistemle konuşuluyor..."
+    8   "Hata"
+    9   "Bilgi"
+    10  "Lisans yöneticisi başlatılamadı"
+    11  "Etkinleştirme durumu kontrol edilemedi"
+    12  "Lisans yöneticisi sistemin zaten etkinleştirildiğini söylüyor"
+    13  "Lisans yöneticisi bir hata döndürdü"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Griechisch (Griechenland)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ELL)
+LANGUAGE LANG_GREEK, SUBLANG_DEFAULT
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Ενεργοποιητής Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Το κλειδί σας:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Δημιουργία κλειδιού", 105, 314, 40, 74, 12
+    CTEXT           "ID εγκατάστασης:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Λήψη από το σύστημα", 102, 314, 54, 74, 12
+    CTEXT           "ID επιβεβαίωσης:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Αποθήκευση στο σύστημα", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Ενεργοποίηση διαφανούς γραμματοσειράς", 106, 5, 82, 108, 12
+    CTEXT           "*Σημείωση: Πειραματικό, απαιτεί Vista ή νεότερο", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Επιτυχής ενεργοποίηση"
+    1   "Αναμονή εισαγωγής..."
+    2   "Το ID είναι πολύ μεγάλο"
+    3   "Μη έγκυρος χαρακτήρας"
+    4   "Μη έγκυρο ψηφίο ελέγχου"
+    5   "Άγνωστη έκδοση ID"
+    6   "Αυτό το ID είναι πολύ άτυχο"
+    7   "Επικοινωνία με το σύστημα..."
+    8   "Σφάλμα"
+    9   "Πληροφορία"
+    10  "Αποτυχία αρχικοποίησης διαχειριστή αδειών"
+    11  "Αποτυχία ελέγχου κατάστασης ενεργοποίησης"
+    12  "Ο διαχειριστής αδειών λέει ότι το σύστημα είναι ήδη ενεργοποιημένο"
+    13  "Ο διαχειριστής αδειών επέστρεψε σφάλμα"
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// Tschechisch (Tschechien)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CSY)
+LANGUAGE LANG_CZECH, SUBLANG_DEFAULT
+
+100 DIALOGEX 0, 0, 410, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Aktivátor Windows XP"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "", 200, "STATIC", SS_BITMAP | WS_CHILD | WS_VISIBLE, 20, 5, 50, 50
+    CTEXT           "Váš klíč:", -1, 2, 40, 75, 12
+    EDITTEXT        106, 60, 40, 250, 12, ES_CENTER | ES_READONLY
+    PUSHBUTTON      "Generovat klíč", 105, 314, 40, 74, 12
+    CTEXT           "ID instalace:", -1, 2, 54, 58, 10
+    EDITTEXT        101, 60, 54, 250, 12, ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Získat ze systému", 102, 314, 54, 74, 12
+    CTEXT           "ID potvrzení:", -1, 2, 68, 58, 10
+    EDITTEXT        103, 60, 68, 250, 12, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Uložit do systému", 104, 314, 68, 74, 12
+    PUSHBUTTON      "Povolit průhledné písmo", 106, 5, 82, 108, 12
+    CTEXT           "*Poznámka: Experimentální, vyžaduje Vistu nebo novější", -1, 115, 82, 158, 80
+END
+
+STRINGTABLE
+BEGIN
+    0   "Aktivace úspěšná"
+    1   "Čekání na vstup..."
+    2   "ID je příliš dlouhé"
+    3   "Neplatný znak"
+    4   "Neplatná kontrolní číslice"
+    5   "Neznámá verze ID"
+    6   "Toto ID má opravdu smůlu"
+    7   "Komunikace se systémem..."
+    8   "Chyba"
+    9   "Informace"
+    10  "Nepodařilo se inicializovat správce licencí"
+    11  "Nepodařilo se ověřit stav aktivace"
+    12  "Správce licencí hlásí, že systém je již aktivován"
+    13  "Správce licencí vrátil chybu"
+END
+#endif
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+IDB_KEY_BITMAP BITMAP "key.bmp"
+
+// Am Ende deiner Resource.rc Datei:
+
